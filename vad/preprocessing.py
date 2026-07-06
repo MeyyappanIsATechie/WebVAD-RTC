@@ -59,7 +59,7 @@ def resample(audio: np.ndarray, orig_sr: int, target_sr: int = TARGET_SR) -> np.
     """
     Resample audio from orig_sr to target_sr.
 
-    Why resample? WebRTC VAD (next step) expects 8/16/32/48kHz specifically.
+    Why resample? WebRTC VAD expects 8/16/32/48kHz specifically.
     Our models and feature extractors will all assume 16kHz.
 
     Uses scipy's polyphase resampling — clean and accurate.
@@ -225,6 +225,5 @@ if __name__ == "__main__":
 
     plot_waveform(audio, title="Synthetic Audio — Speech + Noise", ground_truth=gt_segments)
 
-    # Optionally save to disk to test load_audio() in the next step
-    # wav.write("test_audio.wav", TARGET_SR, audio)
-    # print("Saved test_audio.wav")
+    wav.write("test_audio.wav", TARGET_SR, audio)
+    print("Saved test_audio.wav")
